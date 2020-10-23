@@ -3,10 +3,18 @@ package com.xp.rps;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+//@RunWith(SpringRunner.class)
+@JdbcTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@Import(JDBCRepo.class) //Somehow @JdbcTest not able to load @Repository, Import to force it happen
+@Transactional //This will cause each test rollback after testing, also rollback the beforeTestRun.sql
 public class RpsRepoTest {
 
 

@@ -2,7 +2,6 @@ package com.xp.rps;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class RpsController {
@@ -13,7 +12,7 @@ public class RpsController {
 
     @PostMapping("/play")
     Round simplePlay(@RequestBody Round round) {
-        Result playResult = RPS.play(round.getP1(), round.getP2());
+        Result playResult = RPS.play(round.getThrow1(), round.getThrow2());
         round.setResult(playResult);
         return round;
     }
@@ -31,7 +30,7 @@ public class RpsController {
 
     @PostMapping("/game/{id}/round")
     int playRound(@PathVariable int id, @RequestBody Round round) {
-        Result playResult = RPS.play(round.getP1(), round.getP2());
+        Result playResult = RPS.play(round.getThrow1(), round.getThrow2());
         round.setResult(playResult);
         int roundID = repo.addRound(id, round);
         return roundID;

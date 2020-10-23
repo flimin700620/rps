@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.List;
 
-@Repository
+//@Repository
 public class InMemoryRepo implements RpsRepo {
     int identity=0;
     HashMap<Integer, Game> repo = new HashMap<Integer, Game>();
