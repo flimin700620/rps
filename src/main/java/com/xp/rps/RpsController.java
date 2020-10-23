@@ -29,8 +29,8 @@ public class RpsController {
         return repo.getGame(id);
     }
 
-    @PostMapping("/game/{id}/play")
-    int playGame(@PathVariable int id, @RequestBody Round round) {
+    @PostMapping("/game/{id}/round")
+    int playRound(@PathVariable int id, @RequestBody Round round) {
         Result playResult = RPS.play(round.getP1(), round.getP2());
         round.setResult(playResult);
         int roundID = repo.addRound(id, round);

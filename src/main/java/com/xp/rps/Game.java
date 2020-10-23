@@ -17,7 +17,7 @@ public class Game {
     public Game() {
     }
 
-    Result getResult() {
+    public Result getResult() {
         int p1=0;
         int p2=0;
         Result result;

@@ -39,8 +39,8 @@ class RpsApplicationTests {
 		ResponseEntity<Integer> response = restTemplate.postForEntity("/game", new Game("Ray","James",3,"Buy a coffee machine"),Integer.class);
 		int gameID=response.getBody();
 
-		restTemplate.postForEntity("/game/"+gameID+"/play",new Round(Throw.ROCK, Throw.PAPER),Integer.class);
-		restTemplate.postForEntity("/game/"+gameID+"/play",new Round(Throw.ROCK, Throw.PAPER),Integer.class);
+		restTemplate.postForEntity("/game/"+gameID+"/round",new Round(Throw.ROCK, Throw.PAPER),Integer.class);
+		restTemplate.postForEntity("/game/"+gameID+"/round",new Round(Throw.ROCK, Throw.PAPER),Integer.class);
 
 		ResponseEntity<Game>  game = restTemplate.getForEntity("/game/"+gameID,Game.class);
 		assertEquals("Ray",game.getBody().getPlayer1());
