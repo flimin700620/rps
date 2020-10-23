@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@RunWith(SpringRunner.class)
 @JdbcTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @Import(JDBCRepo.class) //Somehow @JdbcTest not able to load @Repository, Import to force it happen
@@ -18,11 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RpsRepoTest {
 
 
+    @Autowired
     RpsRepo repo;
 
     @BeforeEach
     void setup() {
-        repo = new InMemoryRepo();
+        //repo = new InMemoryRepo();
     }
 
 
