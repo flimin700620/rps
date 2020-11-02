@@ -10,6 +10,11 @@ public class RpsController {
     @Autowired
     RpsRepo repo;
 
+    @GetMapping("/")
+    String hello() {
+        return "Hello!";
+    }
+
     @PostMapping("/play")
     Round simplePlay(@RequestBody Round round) {
         Result playResult = RPS.play(round.getThrow1(), round.getThrow2());
